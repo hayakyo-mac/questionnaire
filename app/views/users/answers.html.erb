@@ -13,9 +13,9 @@
     <ul class="nav nav-tabs nav-justified">
       <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Questionts <span class="badge"><%= @count_questions %></span><% end %></li>
       <li><a href="#">Favorites</a></li>
-      <li><a href="#">Answers</a></li>
+      <li class="<%= 'active' if current_page?(answer_user_path(@user)) %>"><%= link_to answer_user_path(@user) do %>Answers <span class="badge"><%= @count_answers %></span><% end %></li>
       <li><a href="#">Results</a></li>
     </ul>
-    <%= render 'questions/questions', questions: @questions %>
+    <%= render 'users', users: @answer %>
   </div>
 </div>

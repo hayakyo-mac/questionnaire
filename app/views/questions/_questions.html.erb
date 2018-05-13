@@ -1,0 +1,16 @@
+<ul class="media-list">
+  <% questions.each do |question| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(question.user, options = { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to question.content, answer_question_path(question.id) %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+
+  <%= paginate questions %>
+</ul>

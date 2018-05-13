@@ -5,4 +5,18 @@ class User < ApplicationRecord
     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
     uniqueness: { case_sensitive: false }
   has_secure_password
+  
+  
+  has_many :questions
+  
+  has_many :answers
+  has_many :choice_answer, through: :answers, source: :answer
+  
+  def answer(choice)
+    self.answers.find_or_create_by(answer_id: choice.id)
+  end
+
+  def answering?(choice)
+    self.choice_answer.include?(choice)
+  end
 end

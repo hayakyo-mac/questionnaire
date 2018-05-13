@@ -1,0 +1,39 @@
+<div class="text-center">
+  <h1>アンケート作成</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <%= form_for(@question) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <%= f.label :content, '質問' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+
+      <%= fields_for(@choice1) do |choice| %>
+        <%= f.label :content, '回答1' %>
+        <%= choice.text_field :content, name: 'choice1[content]', class: 'form-control' %>
+      <% end %>
+
+      <%= fields_for(@choice2) do |choice| %>
+        <%= f.label :content, '回答2' %>
+        <%= choice.text_field :content, name: 'choice2[content]', class: 'form-control' %>
+      <% end %>
+
+      <%= fields_for(@choice3) do |choice| %>
+        <%= f.label :content, '回答3' %>
+        <%= choice.text_field :content, name: 'choice3[content]', class: 'form-control' %>
+      <% end %>
+
+      <%= fields_for(@choice4) do |choice| %>
+        <%= f.label :content, '回答4' %>
+        <%= choice.text_field :content, name: 'choice4[content]', class: 'form-control' %>
+      <% end %><br>
+      
+      <%= f.submit '作成', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180506103301) do
+ActiveRecord::Schema.define(version: 20180509143903) do
+
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "choice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["choice_id"], name: "index_answers_on_choice_id", using: :btree
+    t.index ["user_id", "choice_id"], name: "index_answers_on_user_id_and_choice_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
+  end
+
+  create_table "choices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_choices_on_question_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -20,4 +46,8 @@ ActiveRecord::Schema.define(version: 20180506103301) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "answers", "choices"
+  add_foreign_key "answers", "users"
+  add_foreign_key "choices", "questions"
+  add_foreign_key "questions", "users"
 end

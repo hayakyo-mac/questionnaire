@@ -1,0 +1,9 @@
+<h1>show</h1>
+<%= @question.id %><br>
+<%= @question.content %>
+
+<br>
+
+<% @choices.each do |choice| %>
+  選択肢 : <%= choice.content %><br>
+<% end %>
