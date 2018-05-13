@@ -10,27 +10,27 @@
 
       <div class="form-group">
         <%= f.label :content, '質問' %>
-        <%= f.text_field :content, class: 'form-control' %>
+        <%= f.text_field :content, class: 'form-control', required: true %>
       </div>
 
       <%= fields_for(@choice1) do |choice| %>
         <%= f.label :content, '回答1' %>
-        <%= choice.text_field :content, name: 'choice1[content]', class: 'form-control' %>
+        <%= choice.text_field :content, name: 'choice1[content]', class: 'form-control', required: true %>
       <% end %>
 
       <%= fields_for(@choice2) do |choice| %>
         <%= f.label :content, '回答2' %>
-        <%= choice.text_field :content, name: 'choice2[content]', class: 'form-control' %>
+        <%= choice.text_field :content, name: 'choice2[content]', class: 'form-control', required: true %>
       <% end %>
 
       <%= fields_for(@choice3) do |choice| %>
         <%= f.label :content, '回答3' %>
-        <%= choice.text_field :content, name: 'choice3[content]', class: 'form-control' %>
+        <%= choice.text_field :content, name: 'choice3[content]', class: 'form-control', required: true %>
       <% end %>
 
       <%= fields_for(@choice4) do |choice| %>
         <%= f.label :content, '回答4' %>
-        <%= choice.text_field :content, name: 'choice4[content]', class: 'form-control' %>
+        <%= choice.text_field :content, name: 'choice4[content]', class: 'form-control', required: true %>
       <% end %><br>
       
       <%= f.submit '作成', class: 'btn btn-primary btn-block' %>

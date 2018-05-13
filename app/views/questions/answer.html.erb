@@ -7,7 +7,7 @@
       
       <div class="form-group">
         <% @question.choices.each do |choice| %>
-          <%= f.radio_button :choice, choice.id, class: 'form-control' %> <%= choice.content %> 
+          <%= f.radio_button :choice, choice.id, class: 'form-control', required: 'required' %> <%= choice.content %> 
         <% end %>
       </div>
 
