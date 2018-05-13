@@ -14,5 +14,6 @@ class ApplicationController < ActionController::Base
   def counts(user)
     @count_questions = user.questions.count
     @count_choice_answer = user.answers.count
+    @count_answers = user.answers.count
   end
 end

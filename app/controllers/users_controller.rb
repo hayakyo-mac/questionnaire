@@ -11,6 +11,12 @@ class UsersController < ApplicationController
     counts(@user)
   end
 
+  def answers
+    @user = User.find(params[:id])
+    @answers = @user.answers.order('created_at DESC').page(params[:page])
+    counts(@user)
+  end
+
   def new
     @user = User.new
   end

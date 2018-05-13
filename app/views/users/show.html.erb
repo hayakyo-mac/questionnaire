@@ -8,13 +8,14 @@
         <img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
       </div>
     </div>
+    <div>
+      <%= link_to 'アンケートを作成する', new_question_path, class: 'btn btn-info col-xs-12' %>
+    </div>
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Questionts <span class="badge"><%= @count_questions %></span><% end %></li>
-      <li><a href="#">Favorites</a></li>
-      <li><a href="#">Answers</a></li>
-      <li><a href="#">Results</a></li>
+      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Questions <span class="badge"><%= @count_questions %></span><% end %></li>
+      <li class="<%= 'active' if current_page?(answers_user_path(@user)) %>"><%= link_to answers_user_path(@user) do %>Answers <span class="badge"><%= @count_answers %></span><% end %></li>
     </ul>
     <%= render 'questions/questions', questions: @questions %>
   </div>

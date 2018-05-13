@@ -1,0 +1,17 @@
+<ul class="media-list">
+  <% answers.each do |answer| %>
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(answer.user, options = { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <p>アンケート : <%= answer.choice.question.content %></p>
+          <p>回答 : <%= answer.choice.content %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+
+  <%= paginate answers %>
+</ul>

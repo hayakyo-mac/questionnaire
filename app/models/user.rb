@@ -19,4 +19,9 @@ class User < ApplicationRecord
   def answering?(choice)
     self.choice_answer.include?(choice)
   end
+
+  def answered?(question)
+    choice_ids = self.answers.where(user_id: self.id).pluck(:choice_id)
+    (choice_ids & question.choices.pluck(:id)).present?
+  end
 end

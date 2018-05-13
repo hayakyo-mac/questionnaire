@@ -2,9 +2,16 @@ class AnswersController < ApplicationController
   before_action :require_user_logged_in
 
   def create
-    choice = Choice.find_by_id(params[:answer_id])
-    current_user.answers(choice)
+    @answer = current_user.answers.new
+    @answer.choice_id = answer_params[:choice]
+    @answer.save
     flash[:success] = '回答しました。'
     redirect_to root_url
+  end
+
+  private
+
+  def answer_params
+    params.require(:answer).permit(:choice)
   end
 end

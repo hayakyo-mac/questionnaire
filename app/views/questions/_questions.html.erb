@@ -6,7 +6,11 @@
       </div>
       <div class="media-body">
         <div>
-          <%= link_to question.content, answer_question_path(question.id) %>
+          <% if current_user.answered?(question) %>
+            <%= question.content %> ( 既に回答済です )
+          <% else %>
+            <%= link_to question.content, answer_question_path(question.id) %>
+          <% end %>
         </div>
       </div>
     </li>
